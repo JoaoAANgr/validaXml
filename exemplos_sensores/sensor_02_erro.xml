@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<telemetria>
+    <id_sensor>DRONE-AGRO-02</id_sensor>
+    <timestamp>2026-06-17T14:35:00Z</timestamp>
+    <!-- ERRO: Tag de coordenadas faltando -->
+    <bateria_percentual>BATERIA_FRACA</bateria_percentual> <!-- ERRO: Texto onde deveria ser número -->
+    <status>FALHA</status>
+</telemetria>
