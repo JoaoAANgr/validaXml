@@ -1,4 +1,4 @@
-# Monitor PDV — XML Validator Pro
+# Monitor de XML
 
 Validador automático de arquivos XML com monitor de pasta, alertas via n8n e log de erros em CSV.  
 Pensado para PDV: XML inválido cai na pasta → sistema detecta, valida, notifica e arquiva. Tudo automático.
