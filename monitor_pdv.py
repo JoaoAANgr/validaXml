@@ -70,7 +70,9 @@ def _carregar_relatorio(caminho_json: str) -> dict:
 
 def disparar_alerta(caminho_json: str, nome_xml: str) -> bool:
     if N8N_WEBHOOK_URL:
-        return _chamar_webhook(caminho_json, nome_xml)
+        if _chamar_webhook(caminho_json, nome_xml):
+            return True
+        log.warning("Webhook falhou — tentando e-mail direto...")
     return _enviar_email_direto(caminho_json, nome_xml)
 
 

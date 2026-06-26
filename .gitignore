@@ -84,5 +84,8 @@ dashboard_bi_*.csv
 gerar_relatorio_academico.py
 *.docx
 
+# Apresentação local
+APRESENTACAO.bat
+
 # Claude Code
 .claude/

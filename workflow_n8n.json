@@ -1,0 +1,71 @@
+{
+  "name": "Monitor PDV - Alerta XML",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "xml-alerta",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "1",
+      "name": "Webhook XML Erro",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const arquivo   = $input.first().json.arquivo;\nconst timestamp = $input.first().json.timestamp;\nconst erros     = $input.first().json.erros || [];\n\nconst lista = erros.map(e => `<li style='margin-bottom:6px'>${e}</li>`).join('');\n\nconst emailHtml = `\n<div style='font-family:Arial,sans-serif;max-width:600px'>\n  <h2 style='color:#c0392b'>&#9888; Erro em XML de PDV</h2>\n  <table style='border-collapse:collapse;width:100%'>\n    <tr><td style='padding:6px;font-weight:bold'>Arquivo</td><td>${arquivo}</td></tr>\n    <tr><td style='padding:6px;font-weight:bold'>Data/Hora</td><td>${timestamp}</td></tr>\n    <tr><td style='padding:6px;font-weight:bold'>Erros</td><td>${erros.length}</td></tr>\n  </table>\n  <h3>Detalhes:</h3>\n  <ul>${lista}</ul>\n</div>`;\n\nconst csvLinha = `${timestamp},${arquivo},${erros.length}`;\n\nreturn [{ json: { emailHtml, csvLinha, arquivo, erros, timestamp } }];"
+      },
+      "id": "2",
+      "name": "Formatar Dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 300]
+    },
+    {
+      "parameters": {
+        "sendTo": "joaoaangr@gmail.com",
+        "subject": "=[ALERTA PDV] Erro em XML — {{ $json.arquivo }}",
+        "emailType": "html",
+        "message": "={{ $json.emailHtml }}",
+        "options": {}
+      },
+      "id": "3",
+      "name": "Enviar Email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2,
+      "position": [720, 180]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "filePath": "=erros_pdv.csv",
+        "options": {
+          "headerRow": false
+        }
+      },
+      "id": "4",
+      "name": "Gravar Log CSV",
+      "type": "n8n-nodes-base.spreadsheetFile",
+      "typeVersion": 2,
+      "position": [720, 420]
+    }
+  ],
+  "connections": {
+    "Webhook XML Erro": {
+      "main": [[{ "node": "Formatar Dados", "type": "main", "index": 0 }]]
+    },
+    "Formatar Dados": {
+      "main": [
+        [
+          { "node": "Enviar Email",   "type": "main", "index": 0 },
+          { "node": "Gravar Log CSV", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": { "executionOrder": "v1" }
+}
