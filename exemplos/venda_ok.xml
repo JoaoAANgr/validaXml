@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<venda>
+  <numero>1524</numero>
+  <data>2026-06-17T18:05:00</data>
+  <cliente>
+    <cpf>123.456.789-00</cpf>
+    <nome>Joao Silva</nome>
+  </cliente>
+  <itens>
+    <item>
+      <codigo>789101010</codigo>
+      <descricao>REFRIGERANTE COLA</descricao>
+      <quantidade>2</quantidade>
+      <valor_unitario>7.50</valor_unitario>
+      <valor_total>15.00</valor_total>
+    </item>
+  </itens>
+  <total>15.00</total>
+</venda>

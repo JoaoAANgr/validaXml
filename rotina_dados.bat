@@ -1,18 +1,9 @@
 @echo off
-echo ========================================================
-echo   INICIANDO ROTINA DE QUALIDADE DE DADOS (EDGE COMPUTING)
-echo ========================================================
-echo.
+echo Validando XMLs da pasta exemplos...
+python validaXML.py --batch ./exemplos/ --xsd ./exemplos/schema_pdv.xsd -o relatorio_validacao.json --quiet
 
-echo 1. Validando lotes de telemetria dos sensores...
-python validaXML.py --batch ./exemplos_sensores/ --xsd ./exemplos_sensores/schema_telemetria.xsd -o relatorio_validacao.json --quiet
-
-echo.
-echo 2. Exportando dados consolidados para o BI...
+echo Exportando para CSV...
 python gerar_relatorio_bi.py
 
-echo.
-echo ========================================================
-echo   ROTINA FINALIZADA! ABRA O ARQUIVO .CSV NO EXCEL/POWER BI
-echo ========================================================
+echo Pronto. Abra o arquivo .csv no Excel ou Power BI.
 pause

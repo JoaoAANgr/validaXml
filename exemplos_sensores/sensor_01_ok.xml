@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<telemetria>
-    <id_sensor>DRONE-AGRO-01</id_sensor>
-    <timestamp>2026-06-17T14:30:00Z</timestamp>
-    <coordenadas>-31.7654,-52.3376</coordenadas>
-    <bateria_percentual>85</bateria_percentual>
-    <status>OPERANDO</status>
-</telemetria>

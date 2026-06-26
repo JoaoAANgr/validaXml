@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<venda>
+  <numero>1525</numero>
+  <data>2026-06-17T18:10:00</data>
+  <cliente>
+    <cpf>987.654.321-00</cpf>
+    <nome>Maria Santos</nome>
+  </cliente>
+  <itens>
+    <item>
+      <codigo>456789012</codigo>
+      <descricao>AGUA MINERAL & NATURAL</descricao>
+      <quantidade>tres</quantidade>
+      <valor_unitario>3.00</valor_unitario>
+      <valor_total>9.00</valor_total>
+    </item>
+  </itens>
+  <total>9.00</total>
+</venda>

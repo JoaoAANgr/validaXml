@@ -69,3 +69,20 @@ Thumbs.db
 # Local configuration
 .env
 .env.local
+
+# Runtime
+xml_erro/
+xml_processado/
+monitor_pdv.log
+monitor_test_output.txt
+n8n_workflow_update.json
+erros_pdv.csv
+node_modules/
+dashboard_bi_*.csv
+
+# Gerador de relatorio e documento gerado
+gerar_relatorio_academico.py
+*.docx
+
+# Claude Code
+.claude/
